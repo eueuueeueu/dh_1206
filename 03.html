@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>董浩</title>
   <style>
     ul {
       display: flex;
@@ -18,6 +18,8 @@
       height: 40px;
       overflow: hidden;
       background: url(./images/sprite.png) no-repeat;
+      line-height: 64px;
+      font-size: 10px;
     }
   </style>
 </head>
@@ -36,8 +38,10 @@
 </body>
 <script>
   let li = document.querySelectorAll('li')
+  let arr = ['充话费','旅行','车险','游戏','彩票','电影','酒店','理财']
   for (let i = 0; i < li.length; i++) {
     li[i].style.backgroundPositionY = `-${44 * i}px`
+    li[i].innerHTML = arr[i]
   }
 
 </script>
