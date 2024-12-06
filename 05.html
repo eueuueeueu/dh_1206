@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+
+      display: block;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <div>
+    <button>全选</button>
+    <button>不选</button>
+    <button>反选</button>
+  </div>
+</body>
+<script>
+  let input = document.querySelectorAll('input')
+  let button1 = document.querySelectorAll('button')[0]
+  let button2 = document.querySelectorAll('button')[1]
+  let button3 = document.querySelectorAll('button')[2]
+  button1.addEventListener('click', () => {
+    input.forEach(ele => {
+      ele.checked = true
+    });
+  })
+  button2.addEventListener('click', () => {
+    input.forEach(ele => {
+      ele.checked = false
+    });
+  })
+  button3.addEventListener('click', () => {
+    input.forEach(ele => {
+      ele.checked = ele.checked === true ? false : true
+    });
+  })
+
+</script>
+
+</html>

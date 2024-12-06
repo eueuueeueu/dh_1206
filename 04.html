@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  设置密码：<input type="text"><img src="" alt=""><span></span>
+</body>
+<script>
+  let input = document.querySelector('input')
+  let img = document.querySelector('img')
+  let span = document.querySelector('span')
+  input.addEventListener('blur', () => {
+    if (input.value.toString().length >= 6 && input.value.toString().length <= 16) {
+      img.src = './images/right.png'
+      span.innerHTML='正确'
+    }else{
+      img.src = './images/wrong.png'
+      span.innerHTML = '错误'
+    }
+  })
+</script>
+
+</html>

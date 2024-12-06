@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>分时显示不同图片,显示不同问候语</h1>
+  <p>这里默认上午为04:00-12:00，下午为12:00-20:00，晚上为20:00-4:00</p>
+  <img src="" alt="">
+  <div></div>
+</body>
+<script>
+  let img = document.querySelector('img')
+  let div = document.querySelector('div')
+  div.style.fontSize = '30px'
+  let date = new Date()
+  let hour = date.getHours()
+  console.log(hour);
+  if (hour >= 4 && hour < 12) {
+    img.src = './images/morning.jpg'
+    div.innerHTML = '上午好'
+  } else if (hour >= 12 && hour < 20) {
+    img.src = './images/afternoon.jpg'
+    div.innerHTML = '下午好'
+  } else if (hour >= 20 && hour < 24 || hour >= 0 && hour < 4) {
+    img.src = './images/night.jpg'
+    div.innerHTML = '晚上好'
+  }
+</script>
+
+</html>
