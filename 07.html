@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  实现base64编码
+</body>
+<script>
+  function base32(str) {
+    let base32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef'
+    let binaryCodeArr = []
+    let res = ''
+    for (let i = 0; i < str.length; i++) {
+      let binaryCode = str[i].charCodeAt().toString(2).replace(/^/, '0000000').slice(-8)
+      binaryCodeArr.push(binaryCode)
+    }
+    let binaryCodeStr = binaryCodeArr.join('')
+    let binaryCodeStrPaddingZero = binaryCodeStr + ('0').repeat(5 - binaryCodeArr % 5)
+    let binaryCodeLength5 = binaryCodeStr.match(/[01]{5}/g)
+    for (let j = 0; j < binaryCodeLength5.length; j++) {
+      let index = parseInt(binaryCodeLength5[j], 2)
+      res += base32[index]
+    }
+    res = res + ('=').repeat(8 - res.length % 8)
+    return res
+  }
+  console.log(base32('Java'));
+
+</script>
+
+</html>

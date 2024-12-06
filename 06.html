@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>实现base64编码</p>
+  <p>找到原文中的每个字符在ascii编码表直接对应的编码(查表)</p>
+  <p>将上一步得到的code转为二进制的字符串8位(不够补0)</p>
+  <p>将上一步得到的8位二进制字符串 每6位一分割 如果最后不够6位 补0</p>
+  <p>自己生成一个A-Za-z0-9+/ 如果不够补=</p>
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</p>
+  <p>Java</p>
+  <p>74,97,118,97</p>
+  <p>01001010,01100001,01110110,01100001 32</p>
+  <p>010010,100110,000101,110110,011000,010000 36</p>
+  <p>18,38,5,54,24,16</p>
+  <p>smF2YQ</p>
+</body>
+<script>
+  function base64(content) {
+    let base64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+    let arr = []
+    let res = ''
+    for (let i = 0; i < content.length; i++) {
+      let binCode = content[i].charCodeAt().toString(2).replace(/^/, '0000000').slice(-8)
+      arr.push(binCode)
+    }
+    let binCodeStr = arr.join('')
+    let binCodeStrPaddingZero = binCodeStr + ('0').repeat(6 - binCodeStr.length % 6)
+    let binCodeLength6 = binCodeStrPaddingZero.match(/[01]{6}/g)
+    console.log(binCodeLength6);
+
+    for (let j = 0; j < binCodeLength6.length; j++) {
+      let index = parseInt(binCodeLength6[j], 2)
+      res += base64[index]
+    }
+    res = res + ('=').repeat(8 - res.length % 8)
+    return res
+  }
+  console.log(base64('Java'));
+
+</script>
+
+</html>
